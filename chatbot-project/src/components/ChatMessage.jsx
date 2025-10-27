@@ -1,8 +1,9 @@
 import BotProfileImage from '../assets/robot.png'
 import UserProfileImage from '../assets/user.png'
+import dayjs from 'dayjs';
 import './ChatMessage.css'
 
-function ChatMessage ({ message, sender }) {
+function ChatMessage ({ message, sender, time }) {
         // const message = props.message;
         // const sender = props.sender;
         // Destructuring assignment | Shortcut for above 2 lines
@@ -34,6 +35,11 @@ function ChatMessage ({ message, sender }) {
             <div 
               className="chat-message-text">
               {message}
+              {/* The "time && (" check is optional. I added it just to be safe. */}
+               <div className='chat-message-time'>
+                 {dayjs(time).format('h:mma')}
+              </div>
+            
             </div>
               {sender === 'user' ? (
                 <img  
@@ -43,6 +49,8 @@ function ChatMessage ({ message, sender }) {
             ) : null}
           </div>
         );
-      }
 
+       
+      }
+      console.log(UserProfileImage);
       export default ChatMessage;

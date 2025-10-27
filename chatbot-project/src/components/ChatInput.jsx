@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import LoadingSpinner from '../assets/loading-spinner.gif'
+import LoadingSpinner from '../assets/loading-spinner.gif';
 import { Chatbot } from 'supersimpledev'
+import dayjs from 'dayjs';
 import './ChatInput.css'
 
 function ChatInput( { chatMessages, setChatMessages } ) {
@@ -25,7 +26,8 @@ function ChatInput( { chatMessages, setChatMessages } ) {
       {
         message: inputText,
         sender: 'user',
-        id: crypto.randomUUID()
+        id: crypto.randomUUID(),
+        time: dayjs().valueOf()
       }
       ];
 
@@ -38,8 +40,8 @@ function ChatInput( { chatMessages, setChatMessages } ) {
         // it will be remove later, when we add the response.
         {
           message: <img src={LoadingSpinner} className="loading-spinner" />,
-          sender: 'robot',
-          id: crypto.randomUUID()
+          sender: 'bot',
+          id: crypto.randomUUID(),
         }
       ]);
 
@@ -49,7 +51,8 @@ function ChatInput( { chatMessages, setChatMessages } ) {
       {
         message: response,
         sender: 'bot',
-        id: crypto.randomUUID()
+        id: crypto.randomUUID(),
+        time:dayjs().valueOf()
       }
       ]);
       setIsLoading(false);
@@ -64,6 +67,17 @@ function ChatInput( { chatMessages, setChatMessages } ) {
         setInputText('');
       }
     }
+
+    function clearMessages() {
+    setChatMessages([]);
+
+    // Here, you could also run:
+    // localStorage.setItem('messages', JSON.stringify([]));
+
+    // However, because chatMessages is being updated, the
+    // useEffect in the App component will run, and it will
+    // automatically update messages in localStorage to be [].
+  }
 
     return (
       // React fragments let you group a list of children without adding extra nodes to the DOM
@@ -82,6 +96,12 @@ function ChatInput( { chatMessages, setChatMessages } ) {
           className="send-btn"
         >
           Send
+        </button>
+        <button
+          onClick={clearMessages}
+          className="clear-btn"
+        >
+          Clear
         </button>
       </div>
     );

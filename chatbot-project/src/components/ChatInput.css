@@ -1,4 +1,5 @@
-.send-btn {
+.send-btn,
+.clear-btn {
   font-size: 15px;
   padding: 10px 20px;
   margin-left: 10px;
@@ -27,3 +28,9 @@
   height: 40px;
   margin: -15px;
 }
+
+.clear-btn {
+  background-color: rgb(230,230,230);
+  color: #000;
+}
+
