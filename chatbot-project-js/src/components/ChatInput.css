@@ -1,0 +1,36 @@
+.send-btn,
+.clear-btn {
+  font-size: 15px;
+  padding: 10px 20px;
+  margin-left: 10px;
+  color: white;
+  background-color: rgb(25, 135, 84);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.chat-input {
+  font-size: 15px;
+  padding: 10px 20px;
+  border: 2px solid gray;
+  border-radius: 10px;
+  flex-grow: 1;
+}
+
+.chat-input-container {
+  display: flex;
+  margin-bottom: 40px;
+  
+}
+
+.loading-spinner {
+  height: 40px;
+  margin: -15px;
+}
+
+.clear-btn {
+  background-color: rgb(230,230,230);
+  color: #000;
+}
+
